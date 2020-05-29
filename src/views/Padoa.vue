@@ -5,22 +5,25 @@
     </header>
     <div class="box">
       <div class="box__question">
-        <button
-          v-if="startFrag"
-          @click="questionStart"
-          style="background: skyblue; padding: 10px;"
-        >スタート</button>
+        <div v-if="startFrag">
+          <button @click="questionStart" style="background: skyblue; padding: 10px;">スタート</button>
+          <br />
+          <br />
+          <router-link to="/" tag="a">ホームに戻る</router-link>
+        </div>
         <div v-if="questionFrag">
-          <p>第 {{ (questionIndex+1) }} 問</p>
+          <p>第 {{ (questionIndex + 1) }} 問</p>
           <!-- 質問出題コーナー -->
-          <h4>{{ currentQuestion.question }}</h4>
+          <h4 style="height: 70px; width: 80%; margin: auto;">{{ currentQuestion.question }}</h4>
 
           <button
             v-for="i in 5"
             :key="i"
             @click="addAnswer(i-1)"
-            style="width:100%; margin-bottom:15px; background: skyblue"
+            style="width:80%; padding: 10px 0; margin-bottom:20px; background: skyblue"
           >{{ answer_list[i-1] }}</button>
+          <br />
+          <router-link to="/" tag="a">ホームに戻る</router-link>
         </div>
         <div v-if="endAnswer">
           <p>お疲れさまでした</p>
@@ -36,7 +39,7 @@
           >{{ i }}問目: {{ answers[i-1] }}点</p>
         </div>
       </div>
-      <p style="color:red">{{ answers }}</p>
+      <p style="color:red">回答値 (点数){{ answers }}</p>
     </div>
   </div>
 </template>
@@ -267,13 +270,7 @@ export default {
           question: "ばい菌や病気について無用の心配を抱いてしまう。"
         }
       ], //質問文
-      answer_list: [
-        "全くわずらわされない",
-        "ほとんどわずらわされない",
-        "いくらかわずらわされる",
-        "かなりわずらわされる",
-        "非常にわずらわされる"
-      ],
+      answer_list: ["全くない", "ほとんどない", "いくらか", "かなり", "非常に"],
       questionIndex: 0, //現在のクイズ番号を保持する
       select: [0, 1, 2, 3, 4], //選択肢(数字, 後に計算される)
       answers: [], //回答されたものを保持する変数
@@ -292,7 +289,7 @@ export default {
     addAnswer(index) {
       this.answers.push(index);
       this.questionIndex++;
-      if (this.questionIndex === 59) {
+      if (this.questionIndex === 60) {
         this.questionFrag = false;
         this.endAnswer = true;
         this.calcAnswers();

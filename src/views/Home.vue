@@ -1,10 +1,10 @@
 <template>
   <div>
     <div style="padding: 100px 0;">
-      <p>test</p>
+      <p>プロトタイプ(簡易版)</p>
 
-    <router-link to="/Padoa" tag="button" style="background: skyblue; margin-right: 10px; padding: 10px;">Padoa</router-link>
-    <router-link to="/Bocs" tag="button" style="background: pink; padding: 10px;" >Bocs</router-link>
+    <router-link to="/Padoa" tag="button" style="background: skyblue; margin-right: 10px; padding: 10px;">パドゥア尺度</router-link>
+    <router-link to="/Bocs" tag="button" style="background: pink; padding: 10px;" >Y-BOCS</router-link>
 
     </div>
   </div>
