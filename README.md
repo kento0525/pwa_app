@@ -1,3 +1,6 @@
+# vueで作るPWAアプリケーション
+iosもしくはandroidでホームボタンに追加すると、ネイティブアプリのような標示やキャッシュが可能。
+
 # vue-pwa-tutorial
 
 ## Project setup

@@ -20,7 +20,7 @@
             v-for="i in 5"
             :key="i"
             @click="addAnswer(i-1)"
-            style="width:80%; padding: 10px 0; margin-bottom:20px; background: skyblue"
+            style="width:80%; padding: 10px 0; margin-bottom:20px; background: skyblue; outline:0;"
           >{{ answer_list[i-1] }}</button>
           <br />
           <router-link to="/" tag="a">ホームに戻る</router-link>
@@ -29,6 +29,7 @@
           <p>お疲れさまでした</p>
           <p>点数は【{{ endNumber }}】で</p>
           <p>【{{ endText }}】</p>
+          <p v-if="endText_tuika">{{endText_tuika}}</p>
           <br />
           <router-link to="/">戻る</router-link>
           <p style="margin: 0; display: flex;">-入力内容一覧-</p>
@@ -39,7 +40,7 @@
           >{{ i }}問目: {{ answers[i-1] }}点</p>
         </div>
       </div>
-      <p style="color:red">回答値 (点数){{ answers }}</p>
+      <p style="color:skybule">回答値 (点数){{ answers }}</p>
     </div>
   </div>
 </template>
@@ -278,7 +279,8 @@ export default {
       questionFrag: false, //文章の表示非表示
       endAnswer: false, //質問終わったときの表示非表示
       endNumber: Number, //質問終わったあとの合計点数
-      endText: String //質問終わったあとのテキスト
+      endText: String, //質問終わったあとのテキスト
+      endText_tuika: false //質問終わったあとのテキスト
     };
   },
   methods: {
@@ -304,7 +306,8 @@ export default {
       if (result <= 70) {
         this.endText = "70点以下は強迫性障害の可能性が低いです。";
       } else {
-        this.endText = "70点以上は強迫性障害の可能性が高いです。";
+        this.endText = "70点以上は強迫性障害の可能性があります。";
+        this.endText_tuika = "※ただし、うつ病や全般性不安障害でも点数が高くなるため、あくまで参考までにしてください。"
       }
     }
   },
@@ -335,7 +338,7 @@ export default {
 .box {
   &__question {
     height: 100%;
-    margin-top: 100px;
+    margin-top: 10px;
   }
 }
 </style>

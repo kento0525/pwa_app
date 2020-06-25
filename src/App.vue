@@ -18,6 +18,7 @@ export default {};
   text-align: center;
   color: #2c3e50;
   background: #F5F6F8;
+  touch-action: manipulation;
 }
 
 #nav {
